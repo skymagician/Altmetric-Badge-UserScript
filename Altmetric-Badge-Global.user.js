@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Altmetric Badge (Global)
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Automatically shows the Altmetric badge on academic publisher websites. Uses Google Favicon service for high-quality icons.
 // @author       skymagician
 // @match        https://webvpn.zju.edu.cn/*
@@ -23,6 +23,7 @@
 // @match        https://*.jamanetwork.com/*
 // @match        https://*.bmj.com/*
 // @match        https://*.uchicago.edu/*
+// @match        https://arxiv.org/*
 // @grant        GM_addStyle
 // @icon         https://www.google.com/s2/favicons?domain=altmetric.com&sz=64
 // @license      MIT
@@ -36,7 +37,7 @@
     // Google Sourced Icon (High Quality, requires network access to Google)
     const LOGO_URL = "https://www.google.com/s2/favicons?domain=altmetric.com&sz=128";
     const BOTTOM_DISTANCE = "30px";
-    const AUTO_OPEN = true;
+    const AUTO_OPEN = false;
 
     const css = `
         #altmetric-master-btn { position: fixed; bottom: ${BOTTOM_DISTANCE}; right: 0; z-index: 2147483647; background: #fff; border: 1px solid #ddd; border-right: none; padding: 8px; border-radius: 8px 0 0 8px; cursor: pointer; box-shadow: -2px -2px 10px rgba(0,0,0,0.1); width: 48px; height: 48px; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; user-select: none; }
