@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Altmetric Badge (CN)
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Automatically shows the Altmetric badge on academic publisher websites (China-Optimized). Uses Base64 icon for fast loading without VPN.
 // @author       skymagician
 // @match        https://webvpn.zju.edu.cn/*
@@ -23,6 +23,7 @@
 // @match        https://*.jamanetwork.com/*
 // @match        https://*.bmj.com/*
 // @match        https://*.uchicago.edu/*
+// @match        https://arxiv.org/*
 // @grant        GM_addStyle
 // @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNTAgNTAgTDUwIDAgQTUwIDUwIDAgMCAxIDEwMCA1MCBaIiBmaWxsPSIjRkYzQjMwIi8+PHBhdGggZD0iTTUwIDUwIEwxMDAgNTAgQTUwIDUwIDAgMCAxIDUwIDEwMCBaIiBmaWxsPSIjRjFDNDBGIi8+PHBhdGggZD0iTTUwIDUwIEw1MCAxMDAgQTUwIDUwIDAgMCAxIDAgNTAgWiIgZmlsbD0iIzAwN0FGRiIvPjxwYXRoIGQ9Ik01MCA1MCBMMCA1MCBBNTAgNTAgMCAwIDEgNTAgMCBaIiBmaWxsPSIjMDBBOUNDIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMjUiIGZpbGw9IiNGRkZGRkYiLz48L3N2Zz4=
 // @license      MIT
@@ -37,7 +38,7 @@
   const LOGO_BASE64 =
     "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNTAgNTAgTDUwIDAgQTUwIDUwIDAgMCAxIDEwMCA1MCBaIiBmaWxsPSIjRkYzQjMwIi8+PHBhdGggZD0iTTUwIDUwIEwxMDAgNTAgQTUwIDUwIDAgMCAxIDUwIDEwMCBaIiBmaWxsPSIjRjFDNDBGIi8+PHBhdGggZD0iTTUwIDUwIEw1MCAxMDAgQTUwIDUwIDAgMCAxIDAgNTAgWiIgZmlsbD0iIzAwN0FGRiIvPjxwYXRoIGQ9Ik01MCA1MCBMMCA1MCBBNTAgNTAgMCAwIDEgNTAgMCBaIiBmaWxsPSIjMDBBOUNDIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMjUiIGZpbGw9IiNGRkZGRkYiLz48L3N2Zz4=";
   const BOTTOM_DISTANCE = "30px";
-  const AUTO_OPEN = true;
+  const AUTO_OPEN = false;
 
   const css = `
         #altmetric-master-btn { position: fixed; bottom: ${BOTTOM_DISTANCE}; right: 0; z-index: 2147483647; background: #fff; border: 1px solid #ddd; border-right: none; padding: 8px; border-radius: 8px 0 0 8px; cursor: pointer; box-shadow: -2px -2px 10px rgba(0,0,0,0.1); width: 48px; height: 48px; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; user-select: none; }
